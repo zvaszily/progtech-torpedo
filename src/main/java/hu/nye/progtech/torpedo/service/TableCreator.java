@@ -32,20 +32,23 @@ public class TableCreator {
 
     private void createShip(char[][] map,int shipSize){
         int max;
-        int shipPlace;
+        int shipPlaceX;
+        int shipPlaceY;
         if(shipHorizont()){
             max = numberOfColumns-shipSize;
-            shipPlace = shipPlace(max);
-            System.out.println(shipPlace);
+            shipPlaceX = shipPlace(max);
+            max = numberOfRows;
+            shipPlaceY = shipPlace(max);
             for(int j=0;j<shipSize;j++){
-                map[shipPlace][j]='¤';
+                map[shipPlaceY][shipPlaceX+j]='¤';
             }
         }else{
             max = numberOfRows-shipSize;
-            shipPlace = shipPlace(max);
-            System.out.println(shipPlace);
+            shipPlaceY = shipPlace(max);
+            max = numberOfColumns;
+            shipPlaceX = shipPlace(max);
             for(int j=0;j<shipSize;j++){
-                map[j][shipPlace]='X';
+                map[shipPlaceY+j][shipPlaceX]='X';
             }
         }
     }

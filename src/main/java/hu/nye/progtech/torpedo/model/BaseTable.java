@@ -60,7 +60,8 @@ public final class BaseTable {
         return "BaseTable{" +
                 "numberOfRows=" + numberOfRows +
                 ", numberOfColumns=" + numberOfColumns +
-                ", map=" + Arrays.deepToString(map) +
+                ", map=" + "\n" + Arrays.deepToString(map).replace("],","\n").replace(",","\t ")
+                .replaceAll("[\\[\\]]", " ")+
                 '}';
     }
 }
