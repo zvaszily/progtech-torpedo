@@ -13,20 +13,15 @@ public class TableCreator {
     }
 
     public BaseTable createTable(){
-
         char[][] map=getMap();
         return new BaseTable(numberOfRows,numberOfColumns,map);
     }
 
     private char[][] getMap(){
         char[][] map = new char[numberOfRows][numberOfColumns];
-
         for(int shipSize=5;shipSize>0;shipSize--){
             createShip(map,shipSize);
-
-
         }
-
        return map;
     }
 
@@ -34,21 +29,34 @@ public class TableCreator {
         int max;
         int shipPlaceX;
         int shipPlaceY;
-        if(shipHorizont()){
-            max = numberOfColumns-shipSize;
-            shipPlaceX = shipPlace(max);
-            max = numberOfRows;
-            shipPlaceY = shipPlace(max);
-            for(int j=0;j<shipSize;j++){
-                map[shipPlaceY][shipPlaceX+j]='¤';
-            }
-        }else{
-            max = numberOfRows-shipSize;
-            shipPlaceY = shipPlace(max);
-            max = numberOfColumns;
-            shipPlaceX = shipPlace(max);
-            for(int j=0;j<shipSize;j++){
-                map[shipPlaceY+j][shipPlaceX]='X';
+        boolean shipOverlap = true;
+        while(shipOverlap) {
+            if (shipHorizont()) {
+                max = numberOfColumns - (shipSize + 1);
+                shipPlaceX = shipPlace(max);
+                max = numberOfRows - 1;
+                shipPlaceY = shipPlace(max);
+                for (int j = 0; j < shipSize; j++) {
+                    if (map[shipPlaceY][shipPlaceX + j] == '¤') {
+                        shipOverlap = true;
+                        break;
+                    }
+                    map[shipPlaceY][shipPlaceX + j] = '¤';
+                    shipOverlap = false;
+                }
+            } else {
+                max = numberOfRows - (shipSize + 1);
+                shipPlaceY = shipPlace(max);
+                max = numberOfColumns - 1;
+                shipPlaceX = shipPlace(max);
+                for (int j = 0; j < shipSize; j++) {
+                    if (map[shipPlaceY + j][shipPlaceX] == '¤') {
+                        shipOverlap = true;
+                        break;
+                    }
+                    map[shipPlaceY + j][shipPlaceX] = '¤';
+                    shipOverlap = false;
+                }
             }
         }
     }
@@ -61,9 +69,4 @@ public class TableCreator {
         return (int)(Math.random()*max);
     }
 
-    private boolean validShipPlace(char[][] map,int shipSize,int shipPlace,boolean shshipHorizont){
-        boolean shipPlaceValid;
-
-        return false;
-    }
 }
