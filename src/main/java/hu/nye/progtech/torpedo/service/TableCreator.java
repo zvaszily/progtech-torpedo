@@ -25,10 +25,12 @@ public class TableCreator {
        return map;
     }
 
+
     private void createShip(char[][] map,int shipSize){
         int max;
         int shipPlaceX;
         int shipPlaceY;
+        char shipChar = '\u2587';
         boolean shipOverlap = true;
         while(shipOverlap) {
             if (shipHorizont()) {
@@ -37,11 +39,11 @@ public class TableCreator {
                 max = numberOfRows - 1;
                 shipPlaceY = shipPlace(max);
                 for (int j = 0; j < shipSize; j++) {
-                    if (map[shipPlaceY][shipPlaceX + j] == '¤') {
+                    if (map[shipPlaceY][shipPlaceX + j] == shipChar) {
                         shipOverlap = true;
                         break;
                     }
-                    map[shipPlaceY][shipPlaceX + j] = '¤';
+                    map[shipPlaceY][shipPlaceX + j] = shipChar;
                     shipOverlap = false;
                 }
             } else {
@@ -50,11 +52,11 @@ public class TableCreator {
                 max = numberOfColumns - 1;
                 shipPlaceX = shipPlace(max);
                 for (int j = 0; j < shipSize; j++) {
-                    if (map[shipPlaceY + j][shipPlaceX] == '¤') {
+                    if (map[shipPlaceY + j][shipPlaceX] == shipChar) {
                         shipOverlap = true;
                         break;
                     }
-                    map[shipPlaceY + j][shipPlaceX] = '¤';
+                    map[shipPlaceY + j][shipPlaceX] = shipChar;
                     shipOverlap = false;
                 }
             }
