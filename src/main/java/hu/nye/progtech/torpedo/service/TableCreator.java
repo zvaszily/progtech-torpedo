@@ -20,7 +20,7 @@ public class TableCreator {
     private char[][] getMap(){
         char[][] map = new char[numberOfRows][numberOfColumns];
         for(int shipSize=5;shipSize>0;shipSize--){
-            createShip(map,shipSize);
+          createShip(map,shipSize);
         }
        return map;
     }
