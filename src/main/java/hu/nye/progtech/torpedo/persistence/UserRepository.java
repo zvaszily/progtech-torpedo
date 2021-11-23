@@ -6,6 +6,8 @@ public interface UserRepository {
 
     void addUser(Player player);
 
+    void modUser(Player player);
+
     Player readUser();
 
 }

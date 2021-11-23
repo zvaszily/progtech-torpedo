@@ -22,12 +22,20 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String player1 = scanner.nextLine();
 
-        Player player = new Player(player1,0,0);
-
-        System.out.println(player);
-
-        JdbcUserRepositori jdbcUserRepositori = new JdbcUserRepositori(connection,player);
-        jdbcUserRepositori.addUser(player);
+        if (!player1.equals("")){
+            Player player = new Player(player1,0,0);
+            JdbcUserRepositori jdbcUserRepositori = new JdbcUserRepositori(connection,player);
+            int started = jdbcUserRepositori.readUser().getNumberOfGamesStarted();
+            if(started==0){
+                player.setNumberOfGamesStarted(1);
+                jdbcUserRepositori.addUser(player);
+                System.out.println("Eddig ez az 1. játékod." );
+            }else{
+                player.setNumberOfGamesStarted(started+1);
+                jdbcUserRepositori.modUser(player);
+                System.out.println("Eddig ez a " + player.getNumberOfGamesStarted() + ". játékod, nyertél: " + player.getNumberOfGamesWon() );
+            }
+        }
 
         TableCreator tableCreator = new TableCreator(10,10);
         System.out.println(tableCreator.createTable());
