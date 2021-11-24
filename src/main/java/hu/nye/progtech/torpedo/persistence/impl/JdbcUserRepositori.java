@@ -3,22 +3,19 @@ package hu.nye.progtech.torpedo.persistence.impl;
 import hu.nye.progtech.torpedo.model.Player;
 import hu.nye.progtech.torpedo.persistence.UserRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JdbcUserRepositori implements UserRepository {
+
+    Connection connection = DriverManager.getConnection("jdbc:h2:./db./torpedo","sa","password");
 
     private static final String INSERT_STATEMENT = "INSERT INTO Users (Name, Started, Won) VALUES (?, ?, ?,);";
     private static final String SELECT_STATEMENT = "SELECT * FROM Users WHere Name = ?;";
     private static final String UPDATE_STATEMENT = "UPDATE Users SET Started = ?, Won = ? Where Name = ?;";
 
-    private Connection connection;
     private Player player;
 
-    public JdbcUserRepositori(Connection connection, Player player) {
-        this.connection = connection;
+    public JdbcUserRepositori(Player player) throws SQLException {
         this.player = player;
     }
 
