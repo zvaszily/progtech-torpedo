@@ -5,9 +5,11 @@ import hu.nye.progtech.torpedo.model.BaseTable;
 public class TablePrinter {
 
     private BaseTable baseTable;
+    private BaseTable shotTable;
 
-    public TablePrinter(BaseTable baseTable) {
+    public TablePrinter(BaseTable baseTable, BaseTable shotTable) {
         this.baseTable = baseTable;
+        this.shotTable = shotTable;
     }
 
     public void printTable(BaseTable baseTable){
@@ -42,12 +44,11 @@ public class TablePrinter {
             str.append("\t");
             str.append(i+1);
             str.append("\t");
-            for (int j = 0; j < baseTable.getMap().length; j++) {
-                str.append(baseTable.getMap()[i][j]);
+            for (int j = 0; j < shotTable.getMap().length; j++) {
+                str.append(shotTable.getMap()[i][j]);
                 str.append("  ");
             }
         }
-
         return str.toString();
     }
 
