@@ -4,6 +4,7 @@ import hu.nye.progtech.torpedo.model.BaseTable;
 import hu.nye.progtech.torpedo.model.Player;
 import hu.nye.progtech.torpedo.persistence.impl.JdbcUserRepositori;
 import hu.nye.progtech.torpedo.service.TableCreator;
+import hu.nye.progtech.torpedo.ui.TablePrinter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -38,6 +39,9 @@ public class Main {
         }
 
         TableCreator tableCreator = new TableCreator(10,10);
-        System.out.println(tableCreator.createTable());
+        BaseTable baseTable1 = tableCreator.createTable();
+
+        TablePrinter tablePrinter = new TablePrinter(baseTable1);
+        tablePrinter.printTable(baseTable1);
     }
 }
