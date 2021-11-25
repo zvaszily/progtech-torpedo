@@ -12,11 +12,15 @@ public class PlayerCeator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PlayerCeator.class);
 
-    Scanner scanner = new Scanner(System.in);
+    private final UserInputReader userInputReader;
+
+    public PlayerCeator(UserInputReader userInputReader) {
+        this.userInputReader = userInputReader;
+    }
 
     public Player createPlayer(){
         System.out.println("Hogy hívnak?");
-        String player1 = scanner.nextLine();
+        String player1 = userInputReader.readInput();
         Player player = new Player(player1,0,0);
         if (!player1.equals("")){
             JdbcUserRepositori jdbcUserRepositori = null;
