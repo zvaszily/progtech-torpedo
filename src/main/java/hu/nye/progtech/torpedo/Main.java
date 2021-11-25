@@ -6,8 +6,6 @@ import hu.nye.progtech.torpedo.service.PlayerCeator;
 import hu.nye.progtech.torpedo.service.ShotTableCreator;
 import hu.nye.progtech.torpedo.service.TableCreator;
 import hu.nye.progtech.torpedo.ui.TablePrinter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.SQLException;
 
@@ -20,12 +18,16 @@ public class Main {
         Player player = playerCeator.createPlayer();
 
         TableCreator tableCreator = new TableCreator(10,10);
-        BaseTable baseTable1 = tableCreator.createTable();
+        BaseTable baseTablePlayer = tableCreator.createTable();
+        BaseTable baseTableMachine = tableCreator.createTable();
 
         ShotTableCreator shotTableCreator = new ShotTableCreator(10,10);
-        BaseTable shotTable1 = shotTableCreator.createTable();
+        BaseTable shotTablePlayer = shotTableCreator.createTable();
+        BaseTable shotTableMachine = shotTableCreator.createTable();
 
-        TablePrinter tablePrinter = new TablePrinter(baseTable1,shotTable1);
-        tablePrinter.printTable(baseTable1);
+        TablePrinter tablePrinter = new TablePrinter(baseTablePlayer,shotTablePlayer);
+        tablePrinter.printTable(baseTablePlayer);
+
+
     }
 }
