@@ -1,7 +1,11 @@
 package hu.nye.progtech.torpedo.configuration;
 
+import hu.nye.progtech.torpedo.model.GameState;
+import hu.nye.progtech.torpedo.service.GameController;
+import hu.nye.progtech.torpedo.service.GameStepPerformer;
 import hu.nye.progtech.torpedo.service.PlayerCeator;
 import hu.nye.progtech.torpedo.service.UserInputReader;
+import hu.nye.progtech.torpedo.service.command.InputHandler;
 import hu.nye.progtech.torpedo.ui.PrintWrapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +24,21 @@ public class ApplicationConfiguration {
     @Bean
     public PlayerCeator playerCeator(UserInputReader userInputReader,PrintWrapper printWrapper){
         return  new PlayerCeator(userInputReader, printWrapper);
+    }
+
+    @Bean
+    public GameController gameController(GameState gameState, GameStepPerformer gameStepPerformer) {
+        return new GameController(gameState, gameStepPerformer);
+    }
+
+    @Bean
+    public GameState gameState(){
+        return new GameState();
+    }
+
+    @Bean
+    public GameStepPerformer gameStepPerformer(UserInputReader userInputReader, InputHandler inputHandler) {
+        return new GameStepPerformer(userInputReader, inputHandler);
     }
 
     @Bean
