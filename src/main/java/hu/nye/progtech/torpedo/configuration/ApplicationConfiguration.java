@@ -2,6 +2,7 @@ package hu.nye.progtech.torpedo.configuration;
 
 import hu.nye.progtech.torpedo.service.PlayerCeator;
 import hu.nye.progtech.torpedo.service.UserInputReader;
+import hu.nye.progtech.torpedo.ui.PrintWrapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,7 +18,13 @@ public class ApplicationConfiguration {
         return new UserInputReader(bufferedReader);
     }
     @Bean
-    public PlayerCeator playerCeator(UserInputReader userInputReader){
-        return  new PlayerCeator(userInputReader);
+    public PlayerCeator playerCeator(UserInputReader userInputReader,PrintWrapper printWrapper){
+        return  new PlayerCeator(userInputReader, printWrapper);
     }
+
+    @Bean
+    public PrintWrapper printWrapper() {
+        return new PrintWrapper();
+    }
+
 }
