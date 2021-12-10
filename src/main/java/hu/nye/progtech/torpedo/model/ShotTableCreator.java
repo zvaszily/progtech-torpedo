@@ -1,10 +1,10 @@
-package hu.nye.progtech.torpedo.service;
+package hu.nye.progtech.torpedo.model;
 
 import hu.nye.progtech.torpedo.model.BaseTable;
 
 public class ShotTableCreator {
-    private final int numberOfRows;
-    private final int numberOfColumns;
+    private int numberOfRows;
+    private int numberOfColumns;
 
     public ShotTableCreator(int numberOfRows, int numberOfColumns) {
         this.numberOfRows = numberOfRows;

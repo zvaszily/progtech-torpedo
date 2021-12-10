@@ -1,7 +1,7 @@
 package hu.nye.progtech.torpedo.model;
 
 public class Player {
-    private final String playerName;
+    private String playerName;
     private int numberOfGamesStarted;
     private int numberOfGamesWon;
 
@@ -29,6 +29,10 @@ public class Player {
 
     public void setNumberOfGamesWon(int numberOfGamesWon) {
         this.numberOfGamesWon = numberOfGamesWon;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     @Override

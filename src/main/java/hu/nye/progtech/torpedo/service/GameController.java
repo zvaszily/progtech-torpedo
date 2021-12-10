@@ -4,9 +4,6 @@ import hu.nye.progtech.torpedo.model.GameState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Component that controls the flow of a game.
- */
 public class GameController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GameController.class);

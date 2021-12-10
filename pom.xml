@@ -86,6 +86,7 @@
                         <exclude>hu/nye/progtech/torpedo/model/*</exclude>
                         <exclude>hu/nye/progtech/torpedo/Main.*</exclude>
                         <exclude>hu/nye/progtech/torpedo/ui/*</exclude>
+                        <exclude>hu/nye/progtech/torpedo/configuration/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -114,7 +115,7 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.8</minimum>
+                                            <minimum>0.5</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

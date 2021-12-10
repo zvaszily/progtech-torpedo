@@ -3,7 +3,7 @@ package hu.nye.progtech.torpedo.configuration;
 import hu.nye.progtech.torpedo.model.GameState;
 import hu.nye.progtech.torpedo.service.GameController;
 import hu.nye.progtech.torpedo.service.GameStepPerformer;
-import hu.nye.progtech.torpedo.service.PlayerCeator;
+import hu.nye.progtech.torpedo.service.PlayerCreator;
 import hu.nye.progtech.torpedo.service.UserInputReader;
 import hu.nye.progtech.torpedo.service.command.InputHandler;
 import hu.nye.progtech.torpedo.ui.PrintWrapper;
@@ -22,8 +22,8 @@ public class ApplicationConfiguration {
         return new UserInputReader(bufferedReader);
     }
     @Bean
-    public PlayerCeator playerCeator(UserInputReader userInputReader,PrintWrapper printWrapper){
-        return  new PlayerCeator(userInputReader, printWrapper);
+    public PlayerCreator playerCeator(UserInputReader userInputReader, PrintWrapper printWrapper){
+        return  new PlayerCreator(userInputReader, printWrapper);
     }
 
     @Bean

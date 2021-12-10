@@ -1,6 +1,8 @@
 package hu.nye.progtech.torpedo;
 
 import hu.nye.progtech.torpedo.model.BaseTable;
+import hu.nye.progtech.torpedo.model.ShotTableCreator;
+import hu.nye.progtech.torpedo.model.TableCreator;
 import hu.nye.progtech.torpedo.service.*;
 import hu.nye.progtech.torpedo.ui.TablePrinter;
 import org.springframework.context.ApplicationContext;
@@ -12,8 +14,8 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext("hu.nye.progtech.torpedo");
-        PlayerCeator playerCeator = applicationContext.getBean(PlayerCeator.class);
-        playerCeator.createPlayer();
+        PlayerCreator playerCreator = applicationContext.getBean(PlayerCreator.class);
+        playerCreator.createPlayer();
 
         TableCreator tableCreator = new TableCreator(10,10);
         BaseTable baseTablePlayer = tableCreator.createTable();

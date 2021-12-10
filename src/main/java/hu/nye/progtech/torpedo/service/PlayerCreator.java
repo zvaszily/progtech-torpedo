@@ -8,18 +8,18 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
 
-public class PlayerCeator {
+public class PlayerCreator {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PlayerCeator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PlayerCreator.class);
 
-    private static final String HELLO_MESSAGE = "Szia! Mi a neved?";
-    private static final String NEW_PAYER = "Ez az 1. játékod.";
-    private static final String RETURNING_PAYER = " játékból nyertél: ";
+    static final String HELLO_MESSAGE = "Szia! Mi a neved?";
+    static final String NEW_PAYER = "Ez az 1. játékod.";
+    static final String RETURNING_PAYER = " játékból nyertél: ";
 
     private final UserInputReader userInputReader;
     private final PrintWrapper printWrapper;
 
-    public PlayerCeator(UserInputReader userInputReader, PrintWrapper printWrapper) {
+    public PlayerCreator(UserInputReader userInputReader, PrintWrapper printWrapper) {
         this.userInputReader = userInputReader;
         this.printWrapper = printWrapper;
     }

@@ -1,4 +1,4 @@
-package hu.nye.progtech.torpedo.service;
+package hu.nye.progtech.torpedo.model;
 
 import hu.nye.progtech.torpedo.model.BaseTable;
 
