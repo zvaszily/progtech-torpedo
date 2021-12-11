@@ -18,7 +18,7 @@ public class ExitCommandTest {
 
     @BeforeEach
     public void setUp() {
-        gameState = new GameState();
+        gameState = new GameState(null);
         underTest = new ExitCommand(gameState);
     }
 

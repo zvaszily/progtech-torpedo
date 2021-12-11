@@ -1,6 +1,13 @@
 package hu.nye.progtech.torpedo.configuration;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.List;
+
+import hu.nye.progtech.torpedo.model.BaseTable;
 import hu.nye.progtech.torpedo.model.GameState;
+import hu.nye.progtech.torpedo.model.ShotTableCreator;
+import hu.nye.progtech.torpedo.model.TableCreator;
 import hu.nye.progtech.torpedo.service.GameController;
 import hu.nye.progtech.torpedo.service.GameStepPerformer;
 import hu.nye.progtech.torpedo.service.PlayerCreator;
@@ -10,9 +17,10 @@ import hu.nye.progtech.torpedo.ui.PrintWrapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
+/**
+ * Spring Java configuration class for generic application related Spring Beans.
+ */
 @Configuration
 public class ApplicationConfiguration {
 
@@ -21,8 +29,9 @@ public class ApplicationConfiguration {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         return new UserInputReader(bufferedReader);
     }
+
     @Bean
-    public PlayerCreator playerCeator(UserInputReader userInputReader, PrintWrapper printWrapper){
+    public PlayerCreator playerCreator(UserInputReader userInputReader, PrintWrapper printWrapper) {
         return  new PlayerCreator(userInputReader, printWrapper);
     }
 
@@ -31,9 +40,18 @@ public class ApplicationConfiguration {
         return new GameController(gameState, gameStepPerformer);
     }
 
+    /**
+     * Spring Java configuration create gameState table.
+     */
     @Bean
-    public GameState gameState(){
-        return new GameState();
+    public GameState gameState(List<BaseTable> baseTableList) {
+        TableCreator tableCreator = new TableCreator(10, 10);
+        ShotTableCreator shotTableCreator = new ShotTableCreator(10, 10);
+        baseTableList.add(tableCreator.createTable());
+        baseTableList.add(shotTableCreator.createTable());
+        baseTableList.add(tableCreator.createTable());
+        baseTableList.add(shotTableCreator.createTable());
+        return new GameState(baseTableList);
     }
 
     @Bean

@@ -1,7 +1,8 @@
 package hu.nye.progtech.torpedo.model;
 
-import hu.nye.progtech.torpedo.model.BaseTable;
-
+/**
+ * Model class used to Shot Table.
+ */
 public class ShotTableCreator {
     private int numberOfRows;
     private int numberOfColumns;
@@ -11,9 +12,9 @@ public class ShotTableCreator {
         this.numberOfColumns = numberOfColumns;
     }
 
-    public BaseTable createTable(){
+    public BaseTable createTable() {
         char[][] map = new char[numberOfRows][numberOfColumns];
-        return new BaseTable(numberOfRows,numberOfColumns,map);
+        return new BaseTable(numberOfRows, numberOfColumns, map);
     }
 
 

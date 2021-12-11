@@ -1,20 +1,23 @@
 package hu.nye.progtech.torpedo.service;
 
+import java.sql.SQLException;
+
 import hu.nye.progtech.torpedo.model.Player;
 import hu.nye.progtech.torpedo.persistence.impl.JdbcUserRepositori;
 import hu.nye.progtech.torpedo.ui.PrintWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.SQLException;
-
+/**
+ * Create a Player.
+ */
 public class PlayerCreator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PlayerCreator.class);
 
     static final String HELLO_MESSAGE = "Szia! Mi a neved?";
     static final String NEW_PAYER = "Ez az 1. játékod.";
-    static final String RETURNING_PAYER = " játékból nyertél: ";
+    static final String RETURNING_PAYER = ". játékod ebből nyertél: ";
 
     private final UserInputReader userInputReader;
     private final PrintWrapper printWrapper;
@@ -24,11 +27,14 @@ public class PlayerCreator {
         this.printWrapper = printWrapper;
     }
 
-    public Player createPlayer(){
+    /**
+     * Create a Player with db.
+     */
+    public Player createPlayer() {
         printWrapper.printLine(HELLO_MESSAGE);
         String player1 = userInputReader.readInput();
-        Player player = new Player(player1,0,0);
-        if (!player1.equals("")){
+        Player player = new Player(player1, 0, 0);
+        if (!player1.equals("")) {
             JdbcUserRepositori jdbcUserRepositori = null;
             try {
                 jdbcUserRepositori = new JdbcUserRepositori(player);
@@ -37,15 +43,15 @@ public class PlayerCreator {
             }
             assert jdbcUserRepositori != null;
             int started = jdbcUserRepositori.readUser().getNumberOfGamesStarted();
-            if(started==0){
+            if (started == 0) {
                 player.setNumberOfGamesStarted(1);
                 jdbcUserRepositori.addUser(player);
                 printWrapper.printLine(NEW_PAYER);
-                LOGGER.info("Add a new player to the database.: "+ player1);
-            }else{
-                player.setNumberOfGamesStarted(started+1);
+                LOGGER.info("Add a new player to the database.: " + player1);
+            } else {
+                player.setNumberOfGamesStarted(started + 1);
                 jdbcUserRepositori.modUser(player);
-                printWrapper.printLine(player.getNumberOfGamesStarted() + RETURNING_PAYER + player.getNumberOfGamesWon());
+                printWrapper.printLine("Ez a " + player.getNumberOfGamesStarted() + RETURNING_PAYER + player.getNumberOfGamesWon());
                 LOGGER.info("Query and modify player information.: " + player1);
             }
         }

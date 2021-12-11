@@ -17,7 +17,7 @@ public class GameControllerTest {
     @BeforeEach
     public void init(){
         gameStepPerformer = Mockito.mock(GameStepPerformer.class);
-        gameState = new GameState();
+        gameState = new GameState(null);
     }
 
     @Test

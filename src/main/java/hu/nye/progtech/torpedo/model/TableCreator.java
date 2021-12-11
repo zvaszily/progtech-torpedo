@@ -1,7 +1,9 @@
 package hu.nye.progtech.torpedo.model;
 
-import hu.nye.progtech.torpedo.model.BaseTable;
 
+/**
+ * create Table.
+ */
 public class TableCreator {
 
     private final int numberOfRows;
@@ -12,27 +14,27 @@ public class TableCreator {
         this.numberOfColumns = numberOfColumns;
     }
 
-    public BaseTable createTable(){
-        char[][] map=getMap();
-        return new BaseTable(numberOfRows,numberOfColumns,map);
+    public BaseTable createTable() {
+        char[][] map = getMap();
+        return new BaseTable(numberOfRows, numberOfColumns, map);
     }
 
-    private char[][] getMap(){
+    private char[][] getMap() {
         char[][] map = new char[numberOfRows][numberOfColumns];
-        for(int shipSize=5;shipSize>0;shipSize--){
-          createShip(map,shipSize);
+        for (int shipSize = 5; shipSize > 0; shipSize--) {
+          createShip(map, shipSize);
         }
        return map;
     }
 
 
-    private void createShip(char[][] map,int shipSize){
+    private void createShip(char[][] map, int shipSize) {
         int max;
         int shipPlaceX;
         int shipPlaceY;
         char shipChar = '\u2587';
         boolean shipOverlap = true;
-        while(shipOverlap) {
+        while (shipOverlap) {
             if (shipHorizont()) {
                 max = numberOfColumns - (shipSize + 1);
                 shipPlaceX = shipPlace(max);
@@ -63,12 +65,12 @@ public class TableCreator {
         }
     }
 
-    private boolean shipHorizont(){
+    private boolean shipHorizont() {
         return Math.random() > 0.5;
     }
 
-    private int shipPlace(int max){
-        return (int)(Math.random()*max);
+    private int shipPlace(int max) {
+        return (int) (Math.random() * max);
     }
 
 }

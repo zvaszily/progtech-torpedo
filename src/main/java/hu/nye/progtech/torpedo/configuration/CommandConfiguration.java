@@ -1,5 +1,7 @@
 package hu.nye.progtech.torpedo.configuration;
 
+import java.util.List;
+
 import hu.nye.progtech.torpedo.model.GameState;
 import hu.nye.progtech.torpedo.service.command.Command;
 import hu.nye.progtech.torpedo.service.command.InputHandler;
@@ -9,8 +11,9 @@ import hu.nye.progtech.torpedo.ui.PrintWrapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.List;
-
+/**
+ * Spring Java configuration class for command specific Spring Beans.
+ */
 @Configuration
 public class CommandConfiguration {
 

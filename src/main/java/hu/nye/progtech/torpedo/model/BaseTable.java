@@ -3,6 +3,9 @@ package hu.nye.progtech.torpedo.model;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * Model class used to represent a Torpedo map.
+ */
 public final class BaseTable {
 
     private final int numberOfRows;
@@ -28,7 +31,7 @@ public final class BaseTable {
         return deepCopy(this.map);
     }
 
-    private char[][] deepCopy(char[][] map){
+    private char[][] deepCopy(char[][] map) {
         char[][] result = new char[map.length][];
 
         for (int i = 0; i < map.length; i++) {
@@ -42,10 +45,15 @@ public final class BaseTable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BaseTable baseTable = (BaseTable) o;
-        return numberOfRows == baseTable.numberOfRows && numberOfColumns == baseTable.numberOfColumns && Arrays.deepEquals(map, baseTable.map);
+        return numberOfRows == baseTable.numberOfRows && numberOfColumns == baseTable.numberOfColumns &&
+                Arrays.deepEquals(map, baseTable.map);
     }
 
     @Override
@@ -60,8 +68,8 @@ public final class BaseTable {
         return "BaseTable{" +
                 "numberOfRows=" + numberOfRows +
                 ", numberOfColumns=" + numberOfColumns +
-                ", map=" + "\n" + Arrays.deepToString(map).replace("],","\n").replace(","," " )
-                .replaceAll("[\\[\\]]", " ")+
+                ", map=" + "\n" + Arrays.deepToString(map).replace("],", "\n").replace(",", " ")
+                .replaceAll("[\\[\\]]", " ") +
                 '}';
     }
 }

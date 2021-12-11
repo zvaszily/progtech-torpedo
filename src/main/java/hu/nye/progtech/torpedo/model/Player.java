@@ -1,5 +1,8 @@
 package hu.nye.progtech.torpedo.model;
 
+/**
+ * Model class used to Player.
+ */
 public class Player {
     private String playerName;
     private int numberOfGamesStarted;

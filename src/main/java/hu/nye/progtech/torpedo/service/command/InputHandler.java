@@ -1,6 +1,7 @@
 package hu.nye.progtech.torpedo.service.command;
 
 import java.util.List;
+
 /**
  * Component that handles a given input.
  */
