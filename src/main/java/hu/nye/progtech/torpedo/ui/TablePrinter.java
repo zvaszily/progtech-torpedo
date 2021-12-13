@@ -25,7 +25,7 @@ public class TablePrinter {
 
         for (int k = 0; k < 2; k++) {
             str.append("\t");
-            for (int i = 65; i < baseTableList.getBaseTableList().get(0).getNumberOfColumns() + 65; i++) {
+            for (int i = 65; i < baseTableList.getBaseTableList().get(0).getMap().length + 65; i++) {
                 str.append((char) i);
                 str.append("  ");
             }

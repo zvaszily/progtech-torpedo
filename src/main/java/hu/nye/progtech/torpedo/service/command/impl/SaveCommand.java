@@ -1,7 +1,7 @@
 package hu.nye.progtech.torpedo.service.command.impl;
 
 import hu.nye.progtech.torpedo.model.GameState;
-import hu.nye.progtech.torpedo.service.PlayerCreator;
+import hu.nye.progtech.torpedo.persistence.GameSavesRepository;
 import hu.nye.progtech.torpedo.service.command.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,11 @@ public class SaveCommand implements Command {
     private static final String SAVE_COMMAND = "save";
 
     private GameState gameState;
+    private GameSavesRepository gameSavesRepository;
 
-    public SaveCommand(GameState gameState) {
+    public SaveCommand(GameState gameState, GameSavesRepository gameSavesRepository) {
         this.gameState = gameState;
+        this.gameSavesRepository = gameSavesRepository;
     }
 
     @Override
@@ -28,8 +30,7 @@ public class SaveCommand implements Command {
     @Override
     public void process(String input) {
         LOGGER.debug("Game Save command was called");
-        System.out.println(gameState.toString());
-        System.out.println(gameState.getPlayer());
+        gameSavesRepository.saveGame(gameState);
         LOGGER.info("Game Save was successfully persisted");
     }
 

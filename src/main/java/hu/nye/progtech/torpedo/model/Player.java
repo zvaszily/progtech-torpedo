@@ -38,6 +38,8 @@ public class Player {
         this.playerName = playerName;
     }
 
+    public Player() {}
+
     @Override
     public String toString() {
         return "Player{" +

@@ -2,14 +2,20 @@ package hu.nye.progtech.torpedo.model;
 
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * Represents the current state of the game.
  */
+@XmlRootElement(name = "baseTable")
 public class GameState {
 
     private boolean shouldExit;
     private List<BaseTable> baseTableList;
     private Player player;
+
+    public GameState() {
+    }
 
     public GameState(List<BaseTable> baseTableList) {
         this.baseTableList = baseTableList;
@@ -22,7 +28,6 @@ public class GameState {
     public void setBaseTableList(List<BaseTable> baseTableList) {
         this.baseTableList = baseTableList;
     }
-
 
     public boolean isShouldExit() {
         return shouldExit;
@@ -47,4 +52,6 @@ public class GameState {
                 ", baseTableList=" + baseTableList.get(0) +
                 '}';
     }
+
+
 }

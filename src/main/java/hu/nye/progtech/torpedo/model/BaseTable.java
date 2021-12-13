@@ -8,8 +8,8 @@ import java.util.Objects;
  */
 public final class BaseTable {
 
-    private final int numberOfRows;
-    private final int numberOfColumns;
+    private int numberOfRows;
+    private int numberOfColumns;
     private char[][] map;
 
 
@@ -46,6 +46,8 @@ public final class BaseTable {
         }
         return result;
     }
+
+    public BaseTable() {}
 
     @Override
     public boolean equals(Object o) {
