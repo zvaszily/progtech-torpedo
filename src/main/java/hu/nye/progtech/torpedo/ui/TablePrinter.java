@@ -1,10 +1,12 @@
 package hu.nye.progtech.torpedo.ui;
 
 import hu.nye.progtech.torpedo.model.GameState;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Print actual player tables.
  */
+
 public class TablePrinter {
 
     private final GameState baseTableList;
@@ -13,7 +15,7 @@ public class TablePrinter {
         this.baseTableList = baseTableList;
     }
 
-    public void printTable() {
+    public void printTable(GameState baseTableList) {
         System.out.println(headerString());
         System.out.println(tableString());
     }

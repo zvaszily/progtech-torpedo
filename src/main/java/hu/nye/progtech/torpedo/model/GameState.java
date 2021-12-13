@@ -9,6 +9,7 @@ public class GameState {
 
     private boolean shouldExit;
     private List<BaseTable> baseTableList;
+    private Player player;
 
     public GameState(List<BaseTable> baseTableList) {
         this.baseTableList = baseTableList;
@@ -22,17 +23,21 @@ public class GameState {
         this.baseTableList = baseTableList;
     }
 
-    /*
-                public GameState() {
 
-                }
-            */
     public boolean isShouldExit() {
         return shouldExit;
     }
 
     public void setShouldExit(boolean shouldExit) {
         this.shouldExit = shouldExit;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     @Override

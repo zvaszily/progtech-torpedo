@@ -14,9 +14,9 @@ import hu.nye.progtech.torpedo.service.PlayerCreator;
 import hu.nye.progtech.torpedo.service.UserInputReader;
 import hu.nye.progtech.torpedo.service.command.InputHandler;
 import hu.nye.progtech.torpedo.ui.PrintWrapper;
+import hu.nye.progtech.torpedo.ui.TablePrinter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 
 /**
  * Spring Java configuration class for generic application related Spring Beans.
@@ -33,6 +33,11 @@ public class ApplicationConfiguration {
     @Bean
     public PlayerCreator playerCreator(UserInputReader userInputReader, PrintWrapper printWrapper) {
         return  new PlayerCreator(userInputReader, printWrapper);
+    }
+
+    @Bean
+    public TablePrinter tablePrinter(GameState gameState) {
+        return new TablePrinter(gameState);
     }
 
     @Bean

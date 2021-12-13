@@ -10,7 +10,7 @@ public final class BaseTable {
 
     private final int numberOfRows;
     private final int numberOfColumns;
-    private final char[][] map;
+    private char[][] map;
 
 
     public BaseTable(int numberOfRows, int numberOfColumns, char[][] map) {
@@ -29,6 +29,10 @@ public final class BaseTable {
 
     public char[][] getMap() {
         return deepCopy(this.map);
+    }
+
+    public void setMap(char[][] map) {
+        this.map = map;
     }
 
     private char[][] deepCopy(char[][] map) {

@@ -3,6 +3,7 @@ package hu.nye.progtech.torpedo;
 import java.sql.SQLException;
 
 import hu.nye.progtech.torpedo.model.GameState;
+import hu.nye.progtech.torpedo.model.Player;
 import hu.nye.progtech.torpedo.service.GameController;
 import hu.nye.progtech.torpedo.service.PlayerCreator;
 import hu.nye.progtech.torpedo.ui.TablePrinter;
@@ -24,14 +25,13 @@ public class Main {
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext("hu.nye.progtech.torpedo");
         PlayerCreator playerCreator = applicationContext.getBean(PlayerCreator.class);
-        playerCreator.createPlayer();
+        Player player = playerCreator.createPlayer();
 
         GameState gameState = applicationContext.getBean(GameState.class);
+        gameState.setPlayer(player);
 
         TablePrinter tablePrinter = new TablePrinter(gameState);
-        tablePrinter.printTable();
-
-
+        tablePrinter.printTable(gameState);
 
         GameController gameController = applicationContext.getBean(GameController.class);
         gameController.start();
