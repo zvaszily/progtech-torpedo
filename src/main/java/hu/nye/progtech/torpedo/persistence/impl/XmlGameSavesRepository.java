@@ -7,11 +7,15 @@ import hu.nye.progtech.torpedo.persistence.GameSavesRepository;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * XML based implementation of {@link GameSavesRepository}.
  */
 public class XmlGameSavesRepository implements GameSavesRepository {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(XmlGameSavesRepository.class);
 
     private final Marshaller marshaller;
     private final Unmarshaller unmarshaller;
@@ -29,7 +33,7 @@ public class XmlGameSavesRepository implements GameSavesRepository {
             GameState loadState = (GameState) unmarshaller.unmarshal(new File("state.xml"));
             return (GameState) loadState;
         } catch (JAXBException e) {
-            e.printStackTrace();
+            LOGGER.debug(String.valueOf(e));
             throw new RuntimeException("XML betöltés nem sikerült!");
         }
     }
@@ -39,7 +43,7 @@ public class XmlGameSavesRepository implements GameSavesRepository {
         try {
             marshaller.marshal(gameState, new File("state.xml"));
         } catch (JAXBException e) {
-            e.printStackTrace();
+            LOGGER.debug(String.valueOf(e));
         }
 
     }

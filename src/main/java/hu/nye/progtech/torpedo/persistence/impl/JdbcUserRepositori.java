@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 import hu.nye.progtech.torpedo.model.Player;
 import hu.nye.progtech.torpedo.persistence.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * JDBC based implementation of {@link UserRepository}.
@@ -19,6 +21,8 @@ public class JdbcUserRepositori implements UserRepository {
     static final String INSERT_STATEMENT = "INSERT INTO Users (Name, Started, Won) VALUES (?, ?, ?,);";
     static final String SELECT_STATEMENT = "SELECT * FROM Users WHere Name = ?;";
     static final String UPDATE_STATEMENT = "UPDATE Users SET Started = ?, Won = ? Where Name = ?;";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(JdbcUserRepositori.class);
 
     private Player player;
 
@@ -35,7 +39,7 @@ public class JdbcUserRepositori implements UserRepository {
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.debug(String.valueOf(throwables));
         }
     }
 
@@ -48,7 +52,7 @@ public class JdbcUserRepositori implements UserRepository {
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.debug(String.valueOf(throwables));
         }
     }
 
@@ -63,7 +67,7 @@ public class JdbcUserRepositori implements UserRepository {
             }
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.debug(String.valueOf(throwables));
         }
 
         return player;
